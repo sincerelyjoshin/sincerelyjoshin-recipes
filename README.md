@@ -1,3 +1,3 @@
 # sincerelyjoshin-recipes
 
-AutoPkg recipe repository.
+[AutoPkg](https://github.com/autopkg/autopkg) recipe repository.
