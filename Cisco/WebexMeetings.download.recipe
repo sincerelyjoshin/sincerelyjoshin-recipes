@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>Description</key>
+  <string>
+    Downloads the latest Cisco Webex Meetings disk image.
+  </string>
+  <key>Identifier</key>
+  <string>com.github.sincerelyjoshin.download.WebexMeetings</string>
+  <key>Input</key>
+  <dict>
+    <key>NAME</key>
+    <string>WebexMeetings</string>
+  </dict>
+  <key>MinimumVersion</key>
+  <string>0.2.9</string>
+  <key>Process</key>
+  <array>
+    <dict>
+      <key>Processor</key>
+      <string>URLDownloader</string>
+      <key>Arguments</key>
+      <dict>
+        <key>url</key>
+        <string>https://akamaicdn.webex.com/client/webexapp.dmg</string>
+        <key>filename</key>
+        <string>%NAME%.dmg</string>
+      </dict>
+    </dict>
+    <dict>
+      <key>Processor</key>
+      <string>CodeSignatureVerifier</string>
+      <key>Arguments</key>
+      <dict>
+        <key>input_path</key>
+        <string>%RECIPE_CACHE_DIR%/downloads/%NAME%.dmg/Cisco Webex Meetings.pkg</string>
+        <key>expected_authority_names</key>
+        <array>
+          <string>Developer ID Installer: Cisco (DE8Y96K9QP)</string>
+          <string>Developer ID Certification Authority</string>
+          <string>Apple Root CA</string>
+        </array>
+      </dict>
+    </dict>
+    <dict>
+      <key>Processor</key>
+      <string>FlatPkgUnpacker</string>
+      <key>Arguments</key>
+      <dict>
+        <key>flat_pkg_path</key>
+        <string>%RECIPE_CACHE_DIR%/downloads/%NAME%.dmg/Cisco Webex Meetings.pkg</string>
+        <key>destination_path</key>
+        <string>%RECIPE_CACHE_DIR%/%NAME%</string>
+        <key>purge_destination</key>
+        <true/>
+      </dict>
+    </dict>
+    <dict>
+      <key>Processor</key>
+      <string>PkgPayloadUnpacker</string>
+      <key>Arguments</key>
+      <dict>
+        <key>destination_path</key>
+        <string>%RECIPE_CACHE_DIR%/payload</string>
+        <key>pkg_payload_path</key>
+        <string>%RECIPE_CACHE_DIR%/%NAME%/webex.pkg/payload</string>
+        <key>purge_destination</key>
+        <true/>
+      </dict>
+    </dict>
+    <dict>
+      <key>Processor</key>
+      <string>Versioner</string>
+      <key>Arguments</key>
+      <dict>
+        <key>input_plist_path</key>
+        <string>%RECIPE_CACHE_DIR%/payload/Cisco Webex Meetings/Contents/Info.plist</string>
+        <key>plist_version_key</key>
+        <string>CFBundleShortVersionString</string>
+      </dict>
+    </dict>
+    <dict>
+      <key>Processor</key>
+      <string>PathDeleter</string>
+      <key>Arguments</key>
+      <dict>
+        <key>path_list</key>
+        <array>
+          <string>%RECIPE_CACHE_DIR%/payload</string>
+          <string>%RECIPE_CACHE_DIR%/%NAME%</string>
+        </array>
+      </dict>
+    </dict>
+    <dict>
+      <key>Processor</key>
+      <string>EndOfCheckPhase</string>
+    </dict>
+    <dict>
+      <key>Processor</key>
+      <string>PkgCopier</string>
+      <key>Arguments</key>
+      <dict>
+        <key>pkg_path</key>
+        <string>%RECIPE_CACHE_DIR%/%NAME%-%version%.pkg</string>
+        <key>source_pkg</key>
+        <string>%RECIPE_CACHE_DIR%/downloads/%NAME%.dmg/Cisco Webex Meetings.pkg</string>
+      </dict>
+    </dict>
+  </array>
+</dict>
+</plist>
