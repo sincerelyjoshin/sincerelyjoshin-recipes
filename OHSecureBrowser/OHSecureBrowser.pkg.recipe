@@ -12,6 +12,8 @@
   <dict>
     <key>NAME</key>
     <string>OHSecureBrowser</string>
+    <key>SCRIPTS</key>
+    <string></string>
   </dict>
   <key>ParentRecipe</key>
   <string>com.github.sincerelyjoshin.download.OHSecureBrowser</string>
@@ -79,6 +81,8 @@
                 <string>%bundleid%</string>
                 <key>options</key>
                 <string>purge_ds_store</string>
+                <key>scripts</key>
+                <string>%SCRIPTS%</string>
                 <key>chown</key>
                 <array>
                     <dict>
