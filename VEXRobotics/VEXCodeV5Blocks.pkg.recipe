@@ -2,34 +2,25 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-  <key>Description</key>
-  <string>
-    Downloads the latest VEXcode V5 Blocks disk image and creates a versioned package.
-  </string>
-  <key>Identifier</key>
-  <string>com.github.sincerelyjoshin.pkg.VEXCodeV5Blocks</string>
-  <key>Input</key>
-  <dict>
-    <key>NAME</key>
-    <string>VEXcodeV5Blocks</string>
-  </dict>
-  <key>ParentRecipe</key>
-  <string>com.github.sincerelyjoshin.download.VEXCodeV5Blocks</string>
-  <key>MinimumVersion</key>
-  <string>0.2.9</string>
-  <key>Process</key>
-  <array>
-    <dict>
-      <key>Processor</key>
-      <string>PkgCopier</string>
-      <key>Arguments</key>
-      <dict>
-        <key>pkg_path</key>
-        <string>%RECIPE_CACHE_DIR%/%NAME%-%version%.pkg</string>
-        <key>source_pkg</key>
-        <string>%RECIPE_CACHE_DIR%/downloads/%NAME%.dmg/VEXcode V5.pkg</string>
-      </dict>
-    </dict>
-  </array>
+	<key>Description</key>
+	<string>Downloads the latest version of VEXcode V5 and creates a package.</string>
+	<key>Identifier</key>
+	<string>com.github.sincerelyjoshin.pkg.VEXcodeV5</string>
+	<key>Input</key>
+	<dict>
+		<key>NAME</key>
+		<string>VEXcode V5</string>
+	</dict>
+	<key>MinimumVersion</key>
+	<string>1.0.0</string>
+	<key>ParentRecipe</key>
+	<string>com.github.sincerelyjoshin.download.VEXcodeV5</string>
+	<key>Process</key>
+	<array>
+		<dict>
+			<key>Processor</key>
+			<string>AppPkgCreator</string>
+		</dict>
+	</array>
 </dict>
 </plist>
