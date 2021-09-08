@@ -3,9 +3,7 @@
 <plist version="1.0">
 <dict>
   <key>Description</key>
-  <string>
-    Downloads the latest OHSecureBrowser disk image.
-  </string>
+  <string>Downloads the latest version of OHSecureBrowser.</string>
   <key>Identifier</key>
   <string>com.github.sincerelyjoshin.download.OHSecureBrowser</string>
   <key>Input</key>
@@ -14,47 +12,45 @@
     <string>OHSecureBrowser</string>
   </dict>
   <key>MinimumVersion</key>
-  <string>0.2.9</string>
+  <string>1.0.0</string>
   <key>Process</key>
   <array>
-    <dict>
-      <key>Processor</key>
-      <string>URLTextSearcher</string>
-      <key>Arguments</key>
-      <dict>
-        <key>url</key>
-        <string>https://oh.portal.airast.org/secure-browsers.stml</string>
-        <key>re_pattern</key>
-        <string>(https://[^\"']+\.dmg)</string>
-        <key>result_output_var_name</key>
-        <string>dmg_url</string>
-      </dict>
-    </dict>
     <dict>
       <key>Processor</key>
       <string>URLDownloader</string>
       <key>Arguments</key>
       <dict>
         <key>url</key>
-        <string>%dmg_url%</string>
+        <string>https://sb.portal.cambiumast.com/geturls?clientName=ohio&amp;operatingSystem=macOS</string>
         <key>filename</key>
         <string>%NAME%.dmg</string>
       </dict>
     </dict>
     <dict>
       <key>Processor</key>
-      <string>CodeSignatureVerifier</string>
+      <string>EndOfCheckPhase</string>
+    </dict>
+    <dict>
       <key>Arguments</key>
       <dict>
+        <key>Processor</key>
+        <string>CodeSignatureVerifier</string>
         <key>input_path</key>
-        <string>%RECIPE_CACHE_DIR%/downloads/%NAME%.dmg/OHSecureBrowser.app</string>
+        <string>%pathname%/OHSecureBrowser.app</string>
         <key>requirement</key>
-        <string>identifier "org.mozilla.ohsecurebrowser" and anchor apple generic and certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = "FRFWLA39JY"</string>
+        <string>identifier "com.cambiumassessment.securebrowser" and anchor apple generic and certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = FRFWLA39JY</string>
       </dict>
     </dict>
     <dict>
-      <key>Processor</key>
-      <string>EndOfCheckPhase</string>
+      <key>Arguments</key>
+      <dict>
+        <key>Processor</key>
+        <string>Versioner</string>
+        <key>input_plist_path</key>
+        <string>%pathname%/OHSecureBrowser.app/Contents/Info.plist</string>
+        <key>plist_version_key</key>
+        <string>CFBundleShortVersionString</string>
+      </dict>
     </dict>
   </array>
 </dict>
