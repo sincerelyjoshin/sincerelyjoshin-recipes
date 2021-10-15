@@ -3,15 +3,15 @@
 <plist version="1.0">
 <dict>
     <key>Description</key>
-    <string>Downloads latest Google Chrome dmg installer, creates a pkg, and includes pre and post install scripts.</string>
+    <string>Downloads latest Google Chrome disk image and builds a package and includes a post install script.</string>
     <key>Identifier</key>
-    <string>com.github.sincerelyjoshin.pkg.google-chrome</string>
+    <string>com.github.sincerelyjoshin.pkg.googlechrome</string>
     <key>Input</key>
     <dict>
         <key>NAME</key>
-        <string>google-chrome</string>
+        <string>GoogleChrome</string>
         <key>SCRIPTS</key>
-        <string>google-chrome-scripts</string>
+        <string>GoogleChromeScripts</string>
     </dict>
     <key>MinimumVersion</key>
     <string>1.4.1</string>
