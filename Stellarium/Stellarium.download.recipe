@@ -11,9 +11,9 @@
         <key>NAME</key>
         <string>Stellarium</string>
         <key>ARCHITECTURE</key>
-        <key>x86_64</key>
+        <string>x86_64</string>
     <dict>
-    <MinimumVersion>
+    <key>MinimumVersion</key>
     <string>1.0</string>
     <key>Process</key>
     <array>
