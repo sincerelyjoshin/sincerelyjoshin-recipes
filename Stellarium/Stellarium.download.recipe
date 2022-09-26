@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+</dict>
+    <key>Description</key>
+    <string>Downloads the latest version of Stellarium.</string>
+    <key>Identifier</key>
+    <string>com.github.sincerelyjoshin-recipes.download.Stellarium</string>
+    <key>Input</key>
+    <dict>
+        <key>NAME</key>
+        <string>Stellarium</string>
+        <key>ARCHITECTURE</key>
+        <key>x86_64</key>
+    <dict>
+    <MinimumVersion>
+    <string>1.0</string>
+    <key>Process</key>
+    <array>
+        <dict>
+            <key>Processor</key>
+            <string>GitHubReleasesInfoProvider</string>
+            <key>Arguments</key>
+            <dict>
+                <key>github_repo</key>
+                <string>Stellarium/stellarium</string>
+                <key>asset_regex</key>
+                <string>^Stellarium.*%ARCHITECTURE%.zip$</string>
+            </dict>
+        </dict>
+        <dict>
+            <key>Processor</key>
+            <string>URLDownloader</string>
+        </dict>
+    </array>
+</plist>
