@@ -1,7 +1,0 @@
-#!/bin/sh
-
-# remove Keystone Framework
-find /Applications/Google\ Chrome.app/ -name "KeystoneRegistration.framework" -type d -exec rm -r "{}" \;
-find /Applications/Google\ Chrome.app/ -name "keystone_promote*" -type f -exec rm "{}" \;
-
-exit 0
