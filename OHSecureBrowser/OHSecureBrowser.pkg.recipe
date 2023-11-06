@@ -10,6 +10,8 @@
     <dict>
         <key>NAME</key>
         <string>OHSecureBrowser</string>
+        <key>INSTALLERSCRIPTS</key>
+        <string>Scripts</string>
     </dict>
     <key>MinimumVersion</key>
     <string>1.0</string>
@@ -30,7 +32,61 @@
         </dict>
         <dict>
             <key>Processor</key>
-            <string>AppPkgCreator</string>
+            <string>PkgRootCreator</string>
+            <key>Arguments</key>
+            <dict>
+            	<key>pkgroot</key>
+            	<string>%RECIPE_CACHE_DIR%/%NAME%</string>
+            	<key>pkgdirs</key>
+            	<dict>
+            		<key>Applications</key>
+            		<string>0755</string>
+            	</dict>
+            </dict>
+        </dict>
+        <dict>
+        	<key>Processor</key>
+        	<string>Copier</string>
+        	<key>Arguments</key>
+        	<dict>
+        		<key>source_path</key>
+        		<string>%pathname%/OHSecureBrowser.app</string>
+        		<key>destination_path</key>
+        		<string>%pkgroot%/Applications/OHSecureBrowser.app</string>
+        		<key>overwrite</key>
+        		<string>true</string>
+        	</dict>
+        </dict>
+        <dict>
+        	<key>Processor</key>
+        	<string>PkgCreator</string>
+        	<key>Arguments</key>
+        	<dict>
+        		<key>pkg_request</key>
+        		<dict>
+        			<key>pkgname</key>
+        			<string>%NAME%-%version%</string>
+        			<key>version</key>
+        			<string>%version%</string>
+        			<key>id</key>
+        			<string>com.cambiumassessment.securebrowser</string>
+        			<key>options</key>
+        			<string>purge_ds_store</string>
+        			<key>scripts</key>
+        			<string>%INSTALLERSCRIPTS%</string>
+        			<key>chown</key>
+        			<array>
+        				<dict>
+        					<key>path</key>
+        					<string>Applications</string>
+        					<key>user</key>
+        					<string>root</string>
+        					<key>group</key>
+        					<string>wheel</string>
+        				</dict>
+        			</array>
+        		</dict>
+        	</dict>
         </dict>
     </array>
 </dict>

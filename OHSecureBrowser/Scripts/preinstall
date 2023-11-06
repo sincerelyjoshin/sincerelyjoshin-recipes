@@ -1,0 +1,12 @@
+#!/bin/bash
+
+   function rm_if_exists()
+{
+    if [ -n "${1}" ] && [ -e "${1}" ];then
+        /bin/rm -r "${1}"
+    fi
+}
+
+rm_if_exists /Applications/OHSecureBrowser.app
+
+exit 0
