@@ -9,7 +9,7 @@
     <key>Input</key>
     <dict>
         <key>NAME</key>
-        <string>ATEM Software Control</string>
+        <string>ATEMSoftwareControl</string>
     </dict>
     <key>MinimumVersion</key>
     <string>1.0.0</string>
@@ -19,20 +19,11 @@
     <array>
         <dict>
             <key>Processor</key>
-            <string>FileFinder</string>
-            <key>Arguments</key>
-            <dict>
-                <key>pattern</key>
-                <string>%pathname%/Install ATEM *.pkg</string>
-            </dict>
-        </dict>
-        <dict>
-            <key>Processor</key>
             <string>Copier</string>
             <key>Arguments</key>
             <dict>
                 <key>source_path</key>
-                <string>%found_filename%</string>
+                <string>%RECIPE_CACHE_DIR%/%NAME%/Blackmagic_ATEM_Switchers_%version%.dmg/Install ATEM %version%.pkg</string>
                 <key>destination_path</key>
                 <string>%RECIPE_CACHE_DIR%/%NAME%-%version%.pkg</string>
                 <key>overwrite</key>
