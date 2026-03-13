@@ -5,7 +5,7 @@
 	<key>Description</key>
 	<string>Downloads and packages the latest version of VEXcode IQ.</string>
 	<key>Identifier</key>
-	<string>com.github.sincerelyjoshin.pkg.VEXcodeIQ</string>
+	<string>com.github.sincerelyjoshin-recipes.pkg.VEXcodeIQ</string>
 	<key>Input</key>
 	<dict>
 		<key>NAME</key>
@@ -14,7 +14,7 @@
 	<key>MinimumVersion</key>
 	<string>1.0</string>
 	<key>ParentRecipe</key>
-	<string>com.github.sincerelyjoshin.download.VEXcodeIQ</string>
+	<string>com.github.sincerelyjoshin-recipes.download.VEXcodeIQ</string>
 	<key>Process</key>
 	<array>
 		<dict>
