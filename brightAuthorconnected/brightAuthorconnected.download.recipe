@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+
+    <key>Description</key>
+    <string>Downloads the latest BrightAuthor connected disk image.</string>
+    <key>Identifier</key>
+    <string>com.github.sincerelyjoshin-recipes.download.baconnected</string>
+    <key>MinimumVersion</key>
+    <string>2.3</string>
+    <key>Input</key>
+    <dict>
+        <key>NAME</key>
+        <string>BAConnected</string>
+        <key>APP_NAME</key>
+        <string>BA connected.app</string>
+        <key>DOWNLOAD_INFO_URL</key>
+        <string>https://brightsign-builds.s3.us-east-1.amazonaws.com/web/bs-download-versions.json</string>
+    </dict>
+    <key>Process</key>
+    <array>
+        <dict>
+            <key>Processor</key>
+            <string>URLTextSearcher</string>
+            <key>Arguments</key>
+            <dict>
+                <key>url</key>
+                <string>%DOWNLOAD_INFO_URL%</string>
+                <key>re_pattern</key>
+                <string>"bacon"\s*:\s*\{\s*"version"\s*:\s*"(?P&lt;version&gt;[0-9.]+)"</string>
+            </dict>
+        </dict>
+        <dict>
+            <key>Processor</key>
+            <string>URLDownloader</string>
+            <key>Arguments</key>
+            <dict>
+                <key>url</key>
+                <string>https://downloads.bsn.cloud/BA%20connected-%version%.dmg</string>
+                <key>filename</key>
+                <string>%NAME%-%version%.dmg</string>
+            </dict>
+        </dict>
+        <dict>
+            <key>Processor</key>
+            <string>EndOfCheckPhase</string>
+        </dict>
+    </array>
+</dict>
+</plist>

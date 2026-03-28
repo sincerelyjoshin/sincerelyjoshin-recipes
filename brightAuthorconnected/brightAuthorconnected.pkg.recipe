@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Description</key>
+    <string>Creates a pkg installer for BrightAuthor connected.</string>
+    <key>Identifier</key>
+    <string>com.github.sincerelyjoshin-recipes.pkg.baconnected</string>
+    <key>ParentRecipe</key>
+    <string>com.github.sincerelyjoshin-recipes.download.baconnected</string>
+    <key>MinimumVersion</key>
+    <string>2.3</string>
+    <key>Input</key>
+    <dict>
+        <key>NAME</key>
+        <string>BAConnected</string>
+        <key>APP_NAME</key>
+        <string>BA connected.app</string>
+    </dict>
+    <key>Process</key>
+    <array>
+        <dict>
+            <key>Processor</key>
+            <string>AppDmgVersioner</string>
+            <key>Arguments</key>
+            <dict>
+                <key>dmg_path</key>
+                <string>%dmg_path%</string>
+                <key>app_name</key>
+                <string>%APP_NAME%</string>
+            </dict>
+        </dict>
+        <dict>
+            <key>Processor</key>
+            <string>CodeSignatureVerifier</string>
+            <key>Arguments</key>
+            <dict>
+                <key>input_path</key>
+                <string>%dmg_path%/%APP_NAME%</string>
+                <key>requirement</key>
+                <string>identifier "com.brightsign.BrightAuthor" and anchor apple generic and certificate 1[field.1.2.840.113635.100.6.2.6] and certificate leaf[field.1.2.840.113635.100.6.1.13] and certificate leaf[subject.OU] = "5QT5WFK4G3"</string>
+            </dict>
+        </dict>
+        <dict>
+            <key>Processor</key>
+            <string>AppPkgCreator</string>
+            <key>Arguments</key>
+            <dict>
+                <key>app_path</key>
+                <string>%dmg_path%/%APP_NAME%</string>
+                <key>pkg_path</key>
+                <string>%RECIPE_CACHE_DIR%/%NAME%-%version%.pkg</string>
+                <key>version</key>
+                <string>%version%</string>
+            </dict>
+        </dict>
+    </array>
+</dict>
+</plist>
