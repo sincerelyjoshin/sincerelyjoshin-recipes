@@ -13,8 +13,6 @@
     <dict>
         <key>NAME</key>
         <string>BAConnected</string>
-        <key>APP_NAME</key>
-        <string>BA connected.app</string>
         <key>DOWNLOAD_INFO_URL</key>
         <string>https://brightsign-builds.s3.us-east-1.amazonaws.com/web/bs-download-versions.json</string>
     </dict>

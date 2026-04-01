@@ -14,8 +14,6 @@
     <dict>
         <key>NAME</key>
         <string>BAConnected</string>
-        <key>APP_NAME</key>
-        <string>BA connected.app</string>
     </dict>
     <key>Process</key>
     <array>
@@ -25,9 +23,7 @@
             <key>Arguments</key>
             <dict>
                 <key>dmg_path</key>
-                <string>%dmg_path%</string>
-                <key>app_name</key>
-                <string>%APP_NAME%</string>
+                <string>%pathname%</string>
             </dict>
         </dict>
         <dict>
@@ -36,7 +32,7 @@
             <key>Arguments</key>
             <dict>
                 <key>input_path</key>
-                <string>%dmg_path%/%APP_NAME%</string>
+                <string>%dmg_path%/%app_name%</string>
                 <key>requirement</key>
                 <string>identifier "com.brightsign.BrightAuthor" and anchor apple generic and certificate 1[field.1.2.840.113635.100.6.2.6] and certificate leaf[field.1.2.840.113635.100.6.1.13] and certificate leaf[subject.OU] = "5QT5WFK4G3"</string>
             </dict>
@@ -46,12 +42,6 @@
             <string>AppPkgCreator</string>
             <key>Arguments</key>
             <dict>
-                <key>app_path</key>
-                <string>%dmg_path%/%APP_NAME%</string>
-                <key>pkg_path</key>
-                <string>%RECIPE_CACHE_DIR%/%NAME%-%version%.pkg</string>
-                <key>version</key>
-                <string>%version%</string>
             </dict>
         </dict>
     </array>
