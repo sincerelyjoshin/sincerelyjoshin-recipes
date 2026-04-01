@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Description</key>
+    <string>Creates a pkg installer for MAXQDA.</string>
+    <key>Identifier</key>
+    <string>com.github.sincerelyjoshin-recipes.pkg.MAXQDA</string>
+    <key>ParentRecipe</key>
+    <string>com.github.its-unibas.download.MAXQDA</string>
+    <key>MinimumVersion</key>
+    <string>2.3</string>
+    <key>Input</key>
+    <dict>
+        <key>NAME</key>
+        <string>MAXQDA</string>
+    </dict>
+    <key>Process</key>
+    <array>
+        <dict>
+            <key>Processor</key>
+            <string>AppPkgCreator</string>
+            <key>Arguments</key>
+            <dict>
+            </dict>
+        </dict>
+    </array>
+</dict>
+</plist>
+
