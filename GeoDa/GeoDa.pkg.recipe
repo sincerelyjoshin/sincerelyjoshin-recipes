@@ -14,8 +14,6 @@
     <dict>
         <key>NAME</key>
         <string>GeoDa</string>
-        <key>APP_NAME</key>
-        <string>GeoDa.app</string>
     </dict>
     <key>Process</key>
     <array>
