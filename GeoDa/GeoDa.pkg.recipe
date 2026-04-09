@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Identifier</key>
+    <string>com.github.sincerelyjoshin-recipes.pkg.GeoDa</string>
+    <key>Description</key>
+    <string>Packages the GeoDa app from the downloaded Apple Silicon DMG.</string>
+    <key>MinimumVersion</key>
+    <string>2.3</string>
+    <key>ParentRecipe</key>
+    <string>com.github.sincerelyjoshin-recipes.download.GeoDa</string>
+    <key>Input</key>
+    <dict>
+        <key>NAME</key>
+        <string>GeoDa</string>
+        <key>APP_NAME</key>
+        <string>GeoDa.app</string>
+    </dict>
+    <key>Process</key>
+    <array>
+        <dict>
+            <key>Processor</key>
+            <string>AppPkgCreator</string>
+        </dict>
+    </array>
+</dict>
+</plist>
