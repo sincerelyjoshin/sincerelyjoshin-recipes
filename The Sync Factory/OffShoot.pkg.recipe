@@ -18,6 +18,8 @@
 	<key>Process</key>
 	<array>
 		<dict>
+            <key>Processor</key>
+            <string>PkgCopier</string>
 			<key>Arguments</key>
 			<dict>
 				<key>pkg_path</key>
@@ -25,8 +27,6 @@
 				<key>source_pkg</key>
 				<string>%pathname%/OffShoot Installer.pkg</string>
 			</dict>
-			<key>Processor</key>
-			<string>PkgCopier</string>
 		</dict>
 	</array>
 </dict>

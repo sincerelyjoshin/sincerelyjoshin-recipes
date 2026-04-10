@@ -20,9 +20,6 @@
         <dict>
             <key>Processor</key>
             <string>AppPkgCreator</string>
-            <key>Arguments</key>
-            <dict>
-            </dict>
         </dict>
     </array>
 </dict>

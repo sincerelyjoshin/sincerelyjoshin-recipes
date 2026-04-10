@@ -13,6 +13,8 @@
     <dict>
         <key>NAME</key>
         <string>BAConnected</string>
+        <key>APP_NAME</key>
+        <string>BA connected.app</string>
         <key>DOWNLOAD_INFO_URL</key>
         <string>https://brightsign-builds.s3.us-east-1.amazonaws.com/web/bs-download-versions.json</string>
     </dict>
@@ -37,12 +39,23 @@
                 <key>url</key>
                 <string>https://downloads.bsn.cloud/BA%20connected-%version%.dmg</string>
                 <key>filename</key>
-                <string>%NAME%-%version%.dmg</string>
+                <string>%NAME%.dmg</string>
             </dict>
         </dict>
         <dict>
             <key>Processor</key>
             <string>EndOfCheckPhase</string>
+        </dict>
+        <dict>
+            <key>Processor</key>
+            <string>CodeSignatureVerifier</string>
+            <key>Arguments</key>
+            <dict>
+                <key>input_path</key>
+                <string>%pathname%/%APP_NAME%</string>
+                <key>requirement</key>
+                <string>identifier "com.brightsign.BrightAuthor" and anchor apple generic and certificate 1[field.1.2.840.113635.100.6.2.6] and certificate leaf[field.1.2.840.113635.100.6.1.13] and certificate leaf[subject.OU] = "5QT5WFK4G3"</string>
+            </dict>
         </dict>
     </array>
 </dict>
