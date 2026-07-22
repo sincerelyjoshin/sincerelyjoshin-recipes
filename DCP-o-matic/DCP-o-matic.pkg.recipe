@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Description</key>
+    <string>Downloads the latest stable version of DCP-o-matic for macOS and creates an installer package.</string>
+    <key>Identifier</key>
+    <string>com.github.sincerelyjoshin-recipes.pkg.DCP-o-matic</string>
+    <key>Input</key>
+    <dict>
+        <key>NAME</key>
+        <string>DCP-o-matic</string>
+    </dict>
+    <key>MinimumVersion</key>
+    <string>2.0.0</string>
+    <key>ParentRecipe</key>
+    <string>com.github.sincerelyjoshin-recipes.download.DCP-o-matic</string>
+    <key>Process</key>
+    <array>
+        <dict>
+            <key>Processor</key>
+            <string>AppPkgCreator</string>
+            <key>Arguments</key>
+            <dict>
+                <key>app_path</key>
+                <string>%pathname%/DCP-o-matic 2.app</string>
+                <key>version_key</key>
+                <string>CFBundleVersion</string>
+            </dict>
+        </dict>
+    </array>
+</dict>
+</plist>

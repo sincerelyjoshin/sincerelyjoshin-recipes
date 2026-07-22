@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Description</key>
+    <string>Downloads the latest stable version of DCP-o-matic for macOS and verifies its code signature.</string>
+    <key>Identifier</key>
+    <string>com.github.sincerelyjoshin-recipes.download.DCP-o-matic</string>
+    <key>Input</key>
+    <dict>
+        <key>NAME</key>
+        <string>DCP-o-matic</string>
+    </dict>
+    <key>MinimumVersion</key>
+    <string>2.0.0</string>
+    <key>Process</key>
+    <array>
+        <dict>
+            <key>Processor</key>
+            <string>URLTextSearcher</string>
+            <key>Arguments</key>
+            <dict>
+                <key>url</key>
+                <string>https://dcpomatic.com/download</string>
+                <key>re_pattern</key>
+                <string>Stable release:\s*(?P&lt;version&gt;[0-9]+(?:\.[0-9]+)+)</string>
+                <key>result_output_var_name</key>
+                <string>version</string>
+            </dict>
+        </dict>
+        <dict>
+            <key>Processor</key>
+            <string>URLDownloader</string>
+            <key>Arguments</key>
+            <dict>
+                <key>url</key>
+                <string>https://dcpomatic.com/dl?id=osx-10.10-main&amp;version=%version%&amp;paid=0</string>
+                <key>filename</key>
+                <string>%NAME%-%version%.dmg</string>
+            </dict>
+        </dict>
+        <dict>
+            <key>Processor</key>
+            <string>CodeSignatureVerifier</string>
+            <key>Arguments</key>
+            <dict>
+                <key>input_path</key>
+                <string>%pathname%/DCP-o-matic 2.app</string>
+                <key>requirement</key>
+                <string>identifier "com.dcpomatic" and anchor apple generic and certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = R82DXSR997</string>
+            </dict>
+        </dict>
+        <dict>
+            <key>Processor</key>
+            <string>EndOfCheckPhase</string>
+        </dict>
+    </array>
+</dict>
+</plist>
+
