@@ -19,15 +19,28 @@
     <array>
         <dict>
             <key>Processor</key>
-            <string>Copier</string>
+            <string>PkgCopier</string>
             <key>Arguments</key>
             <dict>
-                <key>source_path</key>
+                <key>source_pkg</key>
                 <string>%RECIPE_CACHE_DIR%/%NAME%/Blackmagic_ATEM_Switchers_%version%.dmg/Install ATEM %version%.pkg</string>
-                <key>destination_path</key>
+                <key>pkg_path</key>
                 <string>%RECIPE_CACHE_DIR%/%NAME%-%version%.pkg</string>
-                <key>overwrite</key>
-                <true/>
+            </dict>
+        </dict>
+        <dict>
+            <key>Processor</key>
+            <string>CodeSignatureVerifier</string>
+            <key>Arguments</key>
+            <dict>
+                <key>input_path</key>
+                <string>%pkg_path%</string>
+                <key>expected_authority_names</key>
+                <array>
+                    <string>Developer ID Installer: Blackmagic Design Inc (9ZGFBWLSYP)</string>
+                    <string>Developer ID Certification Authority</string>
+                    <string>Apple Root CA</string>
+                </array>
             </dict>
         </dict>
     </array>
