@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Identifier</key>
+    <string>com.github.sincerelyjoshin-recipes.download.iClickerCloud</string>
+    <key>Description</key>
+    <string>Downloads the latest version of iClicker Cloud for macOS and verifies its code signature.</string>
+    <key>MinimumVersion</key>
+    <string>2.3</string>
+    <key>Input</key>
+    <dict>
+        <key>NAME</key>
+        <string>iClicker Cloud</string>
+        <key>DOWNLOAD_PAGE</key>
+        <string>https://www.iclicker.com/downloads/iclicker-cloud/</string>
+    </dict>
+    <key>Process</key>
+    <array>
+        <dict>
+            <key>Processor</key>
+            <string>URLTextSearcher</string>
+            <key>Arguments</key>
+            <dict>
+                <key>url</key>
+                <string>%DOWNLOAD_PAGE%</string>
+                <key>re_pattern</key>
+                <string>downloads\.iclicker\.com/app-downloads/iclicker-cloud-([0-9.]+)-mac\.dmg</string>
+                <key>result_output_var_name</key>
+                <string>version</string>
+            </dict>
+        </dict>
+        <dict>
+            <key>Processor</key>
+            <string>EndOfCheckPhase</string>
+        </dict>
+        <dict>
+            <key>Processor</key>
+            <string>URLDownloader</string>
+            <key>Arguments</key>
+            <dict>
+                <key>url</key>
+                <string>https://downloads.iclicker.com/app-downloads/iclicker-cloud-%version%-mac.dmg</string>
+                <key>filename</key>
+                <string>iClickerCloud-%version%.dmg</string>
+            </dict>
+        </dict>
+        <dict>
+            <key>Processor</key>
+            <string>CodeSignatureVerifier</string>
+            <key>Arguments</key>
+            <dict>
+                <key>input_path</key>
+                <string>%pathname%/iClicker Cloud.app</string>
+                <key>requirement</key>
+                <string>identifier "com.macmillannewventures.iclicker-cloud" and anchor apple generic and certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = "5E845CEVPW"</string>
+            </dict>
+        </dict>
+    </array>
+</dict>
+</plist>
