@@ -1,25 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-    <key>Identifier</key>
-    <string>com.github.sincerelyjoshin-recipes.pkg.etcnomad</string>
     <key>Description</key>
     <string>Packages the ETCnomad app from the downloaded archive.</string>
-    <key>MinimumVersion</key>
-    <string>2.3</string>
-    <key>ParentRecipe</key>
-    <string>com.github.apizz.download.ETCnomad</string>
+    <key>Identifier</key>
+    <string>com.github.sincerelyjoshin-recipes.pkg.ETCnomad</string>
     <key>Input</key>
     <dict>
         <key>NAME</key>
         <string>ETCnomad</string>
     </dict>
+    <key>MinimumVersion</key>
+    <string>2.3</string>
+    <key>ParentRecipe</key>
+    <string>com.github.apizz.download.ETCnomad</string>
     <key>Process</key>
     <array>
         <dict>
-            <key>Processor</key>
-            <string>PkgCopier</string>
             <key>Arguments</key>
             <dict>
                 <key>pkg_path</key>
@@ -27,8 +25,9 @@
                 <key>source_pkg</key>
                 <string>%found_filename%</string>
             </dict>
+            <key>Processor</key>
+            <string>PkgCopier</string>
         </dict>
     </array>
 </dict>
 </plist>
-

@@ -2,21 +2,21 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-    <key>Identifier</key>
-    <string>com.github.sincerelyjoshin-recipes.pkg.Praat</string>
     <key>Description</key>
     <string>Creates a package from the latest Praat disk image.</string>
+    <key>Identifier</key>
+    <string>com.github.sincerelyjoshin-recipes.pkg.Praat</string>
+    <key>Input</key>
+    <dict>
+        <key>app_name</key>
+        <string>Praat.app</string>
+        <key>NAME</key>
+        <string>Praat</string>
+    </dict>
     <key>MinimumVersion</key>
     <string>2.3</string>
     <key>ParentRecipe</key>
     <string>com.github.sincerelyjoshin-recipes.download.Praat</string>
-    <key>Input</key>
-    <dict>
-        <key>NAME</key>
-        <string>Praat</string>
-        <key>app_name</key>
-        <string>Praat.app</string>
-    </dict>
     <key>Process</key>
     <array>
         <dict>

@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
     <key>Identifier</key>
-    <string>com.github.sincerelyjoshin-recipes.pkg.zotero</string>
+    <string>com.github.sincerelyjoshin-recipes.pkg.Zotero</string>
     <key>Description</key>
     <string>Packages the Zotero app from the downloaded DMG.</string>
     <key>MinimumVersion</key>

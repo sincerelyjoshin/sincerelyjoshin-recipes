@@ -12,36 +12,36 @@
         <string>ATEMSoftwareControl</string>
     </dict>
     <key>MinimumVersion</key>
-    <string>1.0.0</string>
+    <string>1.1</string>
     <key>ParentRecipe</key>
     <string>com.github.dataJAR-recipes.download.ATEM Software Control</string>
     <key>Process</key>
     <array>
         <dict>
-            <key>Processor</key>
-            <string>PkgCopier</string>
             <key>Arguments</key>
             <dict>
-                <key>source_pkg</key>
-                <string>%RECIPE_CACHE_DIR%/%NAME%/Blackmagic_ATEM_Switchers_%version%.dmg/Install ATEM %version%.pkg</string>
                 <key>pkg_path</key>
                 <string>%RECIPE_CACHE_DIR%/%NAME%-%version%.pkg</string>
+                <key>source_pkg</key>
+                <string>%RECIPE_CACHE_DIR%/%NAME%/Blackmagic_ATEM_Switchers_%version%.dmg/Install ATEM %version%.pkg</string>
             </dict>
+            <key>Processor</key>
+            <string>PkgCopier</string>
         </dict>
         <dict>
-            <key>Processor</key>
-            <string>CodeSignatureVerifier</string>
             <key>Arguments</key>
             <dict>
-                <key>input_path</key>
-                <string>%pkg_path%</string>
                 <key>expected_authority_names</key>
                 <array>
                     <string>Developer ID Installer: Blackmagic Design Inc (9ZGFBWLSYP)</string>
                     <string>Developer ID Certification Authority</string>
                     <string>Apple Root CA</string>
                 </array>
+                <key>input_path</key>
+                <string>%pkg_path%</string>
             </dict>
+            <key>Processor</key>
+            <string>CodeSignatureVerifier</string>
         </dict>
     </array>
 </dict>

@@ -3,28 +3,30 @@
 <plist version="1.0">
 <dict>
     <key>Description</key>
-    <string>Creates a pkg installer for BrightAuthor connected.</string>
+    <string>Downloads the latest version of VEXcode V5 and creates a package.</string>
     <key>Identifier</key>
-    <string>com.github.sincerelyjoshin-recipes.pkg.baconnected</string>
-    <key>ParentRecipe</key>
-    <string>com.github.sincerelyjoshin-recipes.download.baconnected</string>
-    <key>MinimumVersion</key>
-    <string>2.3</string>
+    <string>com.github.sincerelyjoshin-recipes.pkg.VEXcode V5</string>
     <key>Input</key>
     <dict>
         <key>NAME</key>
-        <string>BAConnected</string>
+        <string>VEXcodeV5</string>
     </dict>
+    <key>MinimumVersion</key>
+    <string>1.1</string>
+    <key>ParentRecipe</key>
+    <string>com.github.sincerelyjoshin-recipes.download.VEXcode V5</string>
     <key>Process</key>
     <array>
         <dict>
-            <key>Processor</key>
-            <string>AppPkgCreator</string>
             <key>Arguments</key>
             <dict>
                 <key>pkg_path</key>
                 <string>%RECIPE_CACHE_DIR%/%NAME%-%version%.pkg</string>
+                <key>source_pkg</key>
+                <string>%pathname%/VEXcode V5.pkg</string>
             </dict>
+            <key>Processor</key>
+            <string>PkgCopier</string>
         </dict>
     </array>
 </dict>
