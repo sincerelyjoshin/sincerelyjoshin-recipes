@@ -2,59 +2,67 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+    <key>Description</key>
+    <string>Downloads the latest Praat disk image from GitHub releases.
+
+Set PRERELEASE to a non-empty string to download prereleases, either
+via Input in an override or via the -k option,
+i.e.: `-k PRERELEASE=yes`</string>
     <key>Identifier</key>
     <string>com.github.sincerelyjoshin-recipes.download.Praat</string>
-    <key>Description</key>
-    <string>Downloads the latest Praat disk image from GitHub releases.</string>
-    <key>MinimumVersion</key>
-    <string>2.3</string>
     <key>Input</key>
     <dict>
-        <key>NAME</key>
-        <string>Praat</string>
-        <key>GITHUB_USER</key>
-        <string>praat</string>
-        <key>GITHUB_REPO</key>
-        <string>praat</string>
         <key>ASSET_REGEX</key>
         <string>^praat[0-9]+_mac\.dmg$</string>
+        <key>GITHUB_REPO</key>
+        <string>praat</string>
+        <key>GITHUB_USER</key>
+        <string>praat</string>
+        <key>NAME</key>
+        <string>Praat</string>
+        <key>PRERELEASE</key>
+        <string></string>
     </dict>
+    <key>MinimumVersion</key>
+    <string>2.3</string>
     <key>Process</key>
     <array>
         <dict>
-            <key>Processor</key>
-            <string>GitHubReleasesInfoProvider</string>
             <key>Arguments</key>
             <dict>
-                <key>github_repo</key>
-                <string>%GITHUB_USER%/%GITHUB_REPO%</string>
                 <key>asset_regex</key>
                 <string>%ASSET_REGEX%</string>
+                <key>github_repo</key>
+                <string>%GITHUB_USER%/%GITHUB_REPO%</string>
+                <key>include_prereleases</key>
+                <string>%PRERELEASE%</string>
             </dict>
+            <key>Processor</key>
+            <string>GitHubReleasesInfoProvider</string>
         </dict>
         <dict>
-            <key>Processor</key>
-            <string>URLDownloader</string>
             <key>Arguments</key>
             <dict>
                 <key>filename</key>
                 <string>%NAME%.dmg</string>
             </dict>
+            <key>Processor</key>
+            <string>URLDownloader</string>
         </dict>
         <dict>
             <key>Processor</key>
             <string>EndOfCheckPhase</string>
         </dict>
         <dict>
-            <key>Processor</key>
-            <string>CodeSignatureVerifier</string>
             <key>Arguments</key>
             <dict>
                 <key>input_path</key>
-                <string>%pathname%/%NAME%.app</string>
+                <string>%pathname%/Praat.app</string>
                 <key>requirement</key>
                 <string>anchor apple generic and identifier "org.praat.Praat" and (certificate leaf[field.1.2.840.113635.100.6.1.9] /* exists */ or certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = J9C6R9XA5W)</string>
             </dict>
+            <key>Processor</key>
+            <string>CodeSignatureVerifier</string>
         </dict>
     </array>
 </dict>

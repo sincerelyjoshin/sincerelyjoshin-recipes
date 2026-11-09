@@ -3,17 +3,17 @@
 <plist version="1.0">
 <dict>
     <key>Identifier</key>
-    <string>com.github.sincerelyjoshin-recipes.pkg.iClickerCloud</string>
+    <string>com.github.sincerelyjoshin-recipes.pkg.iClicker Cloud</string>
     <key>Description</key>
     <string>Packages the iClicker Cloud app from the downloaded DMG.</string>
     <key>MinimumVersion</key>
     <string>2.3</string>
     <key>ParentRecipe</key>
-    <string>com.github.sincerelyjoshin-recipes.download.iClickerCloud</string>
+    <string>com.github.sincerelyjoshin-recipes.download.iClicker Cloud</string>
     <key>Input</key>
     <dict>
         <key>NAME</key>
-        <string>iClicker Cloud</string>
+        <string>iClickerCloud</string>
     </dict>
     <key>Process</key>
     <array>

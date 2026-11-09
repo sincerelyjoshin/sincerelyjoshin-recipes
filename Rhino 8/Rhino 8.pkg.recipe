@@ -5,21 +5,19 @@
     <key>Description</key>
     <string>Downloads and packages the latest version of Rhino 8.</string>
     <key>Identifier</key>
-    <string>com.github.sincerelyjoshin-recipes.pkg.Rhino8</string>
+    <string>com.github.sincerelyjoshin-recipes.pkg.Rhino 8</string>
     <key>Input</key>
     <dict>
         <key>NAME</key>
         <string>Rhino8</string>
     </dict>
     <key>MinimumVersion</key>
-    <string>1.0</string>
+    <string>1.1</string>
     <key>ParentRecipe</key>
     <string>com.github.dataJAR-recipes.download.Rhino 8</string>
     <key>Process</key>
     <array>
         <dict>
-            <key>Processor</key>
-            <string>Versioner</string>
             <key>Arguments</key>
             <dict>
                 <key>input_plist_path</key>
@@ -27,10 +25,10 @@
                 <key>plist_version_key</key>
                 <string>CFBundleShortVersionString</string>
             </dict>
+            <key>Processor</key>
+            <string>Versioner</string>
         </dict>
         <dict>
-            <key>Processor</key>
-            <string>AppPkgCreator</string>
             <key>Arguments</key>
             <dict>
                 <key>app_path</key>
@@ -38,6 +36,8 @@
                 <key>pkg_path</key>
                 <string>%RECIPE_CACHE_DIR%/%NAME%-%version%.pkg</string>
             </dict>
+            <key>Processor</key>
+            <string>AppPkgCreator</string>
         </dict>
     </array>
 </dict>
